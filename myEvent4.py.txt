@@ -1,0 +1,80 @@
+﻿import turtle
+win=turtle.Screen()
+t1=turtle.Turtle()
+
+def keyup():
+ pt=t1.pos()
+ print("up",pt)
+ t1.write(pt)
+ t1.fd(45)
+
+def keydown():
+ t1.back(50)
+
+def keyright():
+ t1.rt(45)
+
+def keyleft():
+ t1.lt(45)
+
+def Quit():
+ win.bye()
+
+def addKeys():
+ win.onkey(keyright,"Right")
+ win.onkey(keyleft,"Left")
+ win.onkey(keydown,"Down")
+ win.onkey(keyup,"Up")
+ win.onkey(Quit,"q")
+ win.listen()
+
+def gamePlay():
+ addKeys() 
+ win.listen()
+ turtle.mainloop()
+
+def mousegoto(x, y):
+    t1.goto(x, y)
+
+
+def isinTrap(x,y,x1,y1,x2,y2):
+ minx=min(x1,x2)
+ maxx=max(x1,x2)
+ miny=min(y1,y2)
+ mixy=max(y1,y2) 
+ if x>=minx and x <= maxx and y >= miny and y <= maxy:
+  return True
+ return False
+
+
+def moveTo (x,y):
+ t1.penup()
+ t1.goto(x,y)
+ t1.pendown()
+
+
+def drawRectWithFill(x1,y1,x2,y2,color):
+ moveTo(x1,y1)
+ t1.fillcolor(color)
+ t1.began_fill()
+ t1.goto(x2,y1)
+ t1.goto(x2,y2)
+ t1.goto(x1,y1)
+ t1.goto(x1,y2)
+ t1.end_fill()
+
+
+
+win.onclick(mousegoto)
+
+win.bgpic(‪"C:\Users\400T6B\Desktop\mymaze.gif")
+
+drawRectWithFill(0,0,20,20,"Red")
+
+
+
+
+gamePlay()
+
+
+
